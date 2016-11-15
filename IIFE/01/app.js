@@ -9,7 +9,7 @@
   También se llama envoltura o closure.
   Usar el patrón IIFE ayuda a no poblar el global namespace de variables. Además facilita a emular 
   el comportamiento de  propiedades "privadas", cosa que existe en lenguajes como JAVA pero no en JS.
-  En Lista, 'palabras', 'indice' y 'cantidad' son propiedades privadas.
+  En Lista, 'palabras', 'index' y 'cantidad' son propiedades privadas.
 
   más info:
     - http://stackoverflow.com/questions/8228281/what-is-the-function-construct-in-javascript
@@ -19,58 +19,58 @@
     ;(function() {
       'use strict';
 
-  // Clase que maneja listas de palabras
-  var Lista = function(arreglo) {
-    // Parte privada
+  // Class that handles words lists
+  var List = function(arreglo) {
+    // Private part
     var vector = arreglo,
-    indice = 0,
+    index = 0,
     cantidad = vector.length;
 
     return {
-      // Dentro de este objeto ponemos la funcionalidad pública: accesible incluso desde línea 55
+      // We write public code inside this object
       getNext: function() {
         var p;  
         try {
-          p = (vector[indice] !== undefined) ? vector[indice] : "ERROR CON LOS DATOS";
+          p = (vector[index] !== undefined) ? vector[index] : "ERROR CON LOS DATOS";
           console.log(p);
         }
         catch(error) {
           console.log(error);
         }
         finally {
-          indice++;
-          if(indice >= cantidad) {
-            indice = 0;
+          index++;
+          if(index >= cantidad) {
+            index = 0;
           }
         }
         return(p);
       },
       reset: function() {
-        // Reiniciamos el índice
-        indice = 0;
+        // reset the index
+        index = 0;
       },
     };
   };
 
 window.onload = function() {
-  // Creamos una instancia de Lista:
-  var palabras = new Lista(["volar", "nadar", "jugar ping pong", "jugar pc", "flipar"]),
-  destino = document.querySelector('.gustos'),
+  // Let's create List instance:
+  var words = new List(["fly", "swim", "play ping pong", "play computer", "freak out"]),
+  output = document.querySelector('.gustos'),
   exec = document.querySelector('#exec'),
   test = document.querySelector('#test');
-  console.log(palabras);
+  console.log(words);
 
-  // Seleccionamos el span donde irá la palabra y la obtenemos:
-  destino.innerHTML = palabras.getNext();
+  // Select span where we show word and we get it:
+  output.innerHTML = words.getNext();
 
-  // Añadimos un listener que llamará a la siguiente palabra con cada click
+  // add a listener who will call next word
   exec.addEventListener("click", function(){
-    destino.innerHTML = palabras.getNext();
+    output.innerHTML = words.getNext();
   });
 
-  // Por último, comprobamos que las propiedades son realmente privadas, tratando de acceder directamente a una:
+  // Check properties are really private, so let's try to access index.:
   test.addEventListener("click", function() {
-    alert("La propiedad indice es privada: " + palabras.indice);
+    alert("Index property is private: " + words.index);
   });
 };
 

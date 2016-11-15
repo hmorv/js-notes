@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>IIFE</title>
 	<script type="text/javascript" src="./app.js"></script>
 </head>
 <body>
-	<div id="resultado">
-		<p>Hola! Me llamo pepito y me gusta <span class="gustos"></span></p>
+	<div id="result">
+		<p>Hi! This is Pepe and I like to <span class="gustos"></span></p>
 		<button id="exec">
-			Cambia!
+			Change it!
 		</button>
 		<button id="test">
 			Test
 		</button>
 	</div>
 	<p>
-		El botón <b>cambia</b> actualiza la palabra en el interior del span.
+		<b>Change it</b> button updates the word inside span tag.
 	</p>
 	<p>
-		El botón <b>test</b> tiene un listener que al hacer click trata de llamar a una propiedad privada del objeto palabras. Como no tiene acceso, devuelve undefined.
+		<b>Test</b> button has an event listener attached that calls to a private property when it is clicked. So, because of being private, it will return undefined.
 	</p>
 </body>
 </html>
