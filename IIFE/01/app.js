@@ -15,16 +15,16 @@
     - http://stackoverflow.com/questions/8228281/what-is-the-function-construct-in-javascript
     - http://www.desarrolloweb.com/articulos/iife-closures-envolutra-funcion-javascript.html
   
-*/
-;(function() {
-  'use strict';
+    */
+    ;(function() {
+      'use strict';
 
   // Clase que maneja listas de palabras
   var Lista = function(arreglo) {
     // Parte privada
-    var vector = arreglo;
-    var indice = 0;
-    var cantidad = vector.length;
+    var vector = arreglo,
+    indice = 0,
+    cantidad = vector.length;
 
     return {
       // Dentro de este objeto ponemos la funcionalidad pública: accesible incluso desde línea 55
@@ -52,21 +52,26 @@
     };
   };
 
+window.onload = function() {
   // Creamos una instancia de Lista:
-  var palabras = new Lista(["volar", "nadar", "jugar ping pong", "jugar pc", "flipar"]);
+  var palabras = new Lista(["volar", "nadar", "jugar ping pong", "jugar pc", "flipar"]),
+  destino = document.querySelector('.gustos'),
+  exec = document.querySelector('#exec'),
+  test = document.querySelector('#test');
   console.log(palabras);
 
   // Seleccionamos el span donde irá la palabra y la obtenemos:
-  document.querySelector('.gustos').innerHTML = palabras.getNext();
+  destino.innerHTML = palabras.getNext();
 
   // Añadimos un listener que llamará a la siguiente palabra con cada click
-  document.querySelector('#exec').addEventListener("click", function(){
-    document.querySelector('.gustos').innerHTML = palabras.getNext();
+  exec.addEventListener("click", function(){
+    destino.innerHTML = palabras.getNext();
   });
 
   // Por último, comprobamos que las propiedades son realmente privadas, tratando de acceder directamente a una:
-  document.querySelector('#test').addEventListener("click", function() {
+  test.addEventListener("click", function() {
     alert("La propiedad indice es privada: " + palabras.indice);
   });
+};
 
 }());
