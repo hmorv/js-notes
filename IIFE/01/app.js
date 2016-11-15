@@ -31,7 +31,7 @@
       getNext: function() {
         var p;  
         try {
-          p = (vector[index] !== undefined) ? vector[index] : "ERROR CON LOS DATOS";
+          p = (vector[index] !== undefined) ? vector[index] : "DATA ERROR";
           console.log(p);
         }
         catch(error) {
