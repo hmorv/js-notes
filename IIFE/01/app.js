@@ -20,11 +20,11 @@
       'use strict';
 
   // Class that handles words lists
-  var List = function(arreglo) {
+  var List = function(raw) {
     // Private part
-    var vector = arreglo,
+    var vector = raw,
     index = 0,
-    cantidad = vector.length;
+    amount = vector.length;
 
     return {
       // We write public code inside this object
@@ -39,7 +39,7 @@
         }
         finally {
           index++;
-          if(index >= cantidad) {
+          if(index >= amount) {
             index = 0;
           }
         }
@@ -55,7 +55,7 @@
 window.onload = function() {
   // Let's create List instance:
   var words = new List(["fly", "swim", "play ping pong", "play computer", "freak out"]),
-  output = document.querySelector('.gustos'),
+  output = document.querySelector('.hobbies'),
   exec = document.querySelector('#exec'),
   test = document.querySelector('#test');
   console.log(words);
